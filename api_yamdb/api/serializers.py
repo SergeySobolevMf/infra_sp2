@@ -115,7 +115,7 @@ class UserSerializer(serializers.ModelSerializer):
             User.objects.create(user=user, **profile_data)
         return user
 
-  
+
 class SignUpSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,
