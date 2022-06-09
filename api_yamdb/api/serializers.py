@@ -1,4 +1,3 @@
-from urllib import request
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator, UniqueTogetherValidator
 
@@ -115,8 +114,8 @@ class UserSerializer(serializers.ModelSerializer):
             user = User.objects.create(**validated_data)
             User.objects.create(user=user, **profile_data)
         return user
-        
-        
+
+  
 class SignUpSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
         required=True,

@@ -43,4 +43,3 @@ class IsAdmin(permissions.BasePermission):
         return (request.user.is_superuser
                 or request.user.role == User.ADMIN
                 or request.user == obj)
-
