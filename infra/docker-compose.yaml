@@ -15,7 +15,6 @@ services:
       - ./.env
   web:
     build: ../api_yamdb
-    command: python manage.py runserver 0.0.0.0:8000
     restart: always
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
@@ -24,8 +23,7 @@ services:
       # Данные, хранящиеся в томе media_value, будут доступны в контейнере web 
       # через директорию /app/media/
       - media_value:/media/
-    ports:
-     - "8000:8000"
+ 
     # "зависит от", 
     depends_on:
       - db

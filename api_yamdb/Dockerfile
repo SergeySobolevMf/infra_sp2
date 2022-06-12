@@ -1,25 +1,13 @@
-# Создать образ на основе базового слоя python (там будет ОС и интерпретатор Python).
-# 3.7 — используемая версия Python.
-# slim — обозначение того, что образ имеет только необходимые компоненты для запуска,
-# он не будет занимать много места при развёртывании.
 FROM python:3.7-slim
 
-# Запустить команду создания директории внутри контейнера
-RUN mkdir /api_yamdb
-
-# Скопировать с локального компьютера файл зависимостей
-# в директорию /app.
-COPY requirements.txt /api_yamdb
-
-# Выполнить установку зависимостей внутри контейнера.
-RUN pip3 install -r /api_yamdb/requirements.txt --no-cache-dir
-
-# Скопировать содержимое директории /api_yamdb c локального компьютера
-# в директорию /app.
-COPY . /api_yamdb
-
-# Сделать директорию /app рабочей директорией. 
 WORKDIR /api_yamdb
 
-# Выполнить запуск сервера разработки при старте контейнера.
+
+COPY requirements.txt /api_yamdb
+
+RUN pip3 install -r /api_yamdb/requirements.txt --no-cache-dir
+
+COPY . /api_yamdb
+
+
 CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ] 

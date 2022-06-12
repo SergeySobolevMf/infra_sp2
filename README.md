@@ -71,3 +71,6 @@ API сервиса YaMDb.
 Чтобы ззагрузить список ингредиентов в БД:
 
 ```docker-compose exec web python manage.py loaddata fixtures.json```
+
+## Участники 
+Сергей Соболев - студент курса Python-разработчик
